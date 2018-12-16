@@ -28,8 +28,7 @@ public abstract class BaseContractTest {
     private ProductRepository repositoryMock;
 
     @LocalServerPort
-    private
-    String port;
+    private String port;
 
     @Before
     public void setup() {
@@ -42,6 +41,8 @@ public abstract class BaseContractTest {
         when(repositoryMock.findById("default-product-id-1")).thenReturn(Mono.just(defaultProducts[0]));
         when(repositoryMock.delete(defaultProducts[0])).thenReturn(Mono.empty());
         when(repositoryMock.save(Mockito.any())).thenAnswer(invocation -> Mono.just(invocation.getArguments()[0]));
+        when(repositoryMock.delete(Mockito.any())).thenAnswer(invocation -> Mono.just(invocation.getArguments()[0]));
+        when(repositoryMock.deleteAll()).thenReturn(Mono.empty());
 
         RestAssured.baseURI = "http://localhost:" + port;
     }
