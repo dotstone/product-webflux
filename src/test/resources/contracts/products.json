@@ -1,0 +1,12 @@
+[
+  {
+    "id": "default-product-id-1",
+    "name": "default-product-1",
+    "price": 5
+  },
+  {
+    "id": "default-product-id-2",
+    "name": "default-product-2",
+    "price": 3
+  }
+]
