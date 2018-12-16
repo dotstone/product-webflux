@@ -37,10 +37,6 @@ dependencyManagement {
 	}
 }
 
-test {
-	useJUnitPlatform()
-}
-
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
 	implementation('org.springframework.boot:spring-boot-starter-webflux')
@@ -51,6 +47,15 @@ dependencies {
 
 	testImplementation "org.springframework.cloud:spring-cloud-starter-contract-verifier"
 	testImplementation group: 'io.rest-assured', name: 'spring-mock-mvc', version: '3.0.0'
+
+	// use junit 4 for generated contract tests
+	testCompileOnly 'junit:junit:4.12'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+	testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.1.0'
+}
+
+test {
+	useJUnitPlatform()
 }
 
 contracts {
